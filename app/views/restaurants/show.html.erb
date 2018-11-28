@@ -1,0 +1,20 @@
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <ul>
+    <li><i class="fas fa-map-pin"></i> <%= @restaurant.address %></li>
+    <li><i class="fas fa-phone"></i> <%= @restaurant.phone_number %></li>
+    <li><i class="fas fa-utensils"></i> <%= @restaurant.category %></li>
+  </ul>
+  <hr>
+  <%= link_to 'Back to list', restaurants_path, class: 'btn btn-primary' %>
+  <hr>
+  <h2>Reviews: </h2>
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+    <li>
+      <%= review.rating %> /5 : <%= review.content %>
+    </li>
+    <% end %>
+  </ul>
+  <%= render 'formreview', review: [@restaurant, @review] %>
+</div>
